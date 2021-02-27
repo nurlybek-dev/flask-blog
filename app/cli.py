@@ -23,10 +23,11 @@ def createsuperuser(username, password):
 
 @click.command()
 @with_appcontext
-def init_db():
+def create_db():
     db.create_all()
+    print("Database create successfully.")
 
 
 def init_app(app):
     app.cli.add_command(createsuperuser)
-    app.cli.add_command(init_db)
+    app.cli.add_command(create_db)
