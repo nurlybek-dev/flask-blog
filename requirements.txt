@@ -3,3 +3,4 @@ flask-moment
 flask-sqlalchemy
 gunicorn
 psycopg2
+Flask-Markdown
