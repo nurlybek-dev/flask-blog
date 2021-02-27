@@ -128,8 +128,12 @@ article > footer {
     color: white;
 }
 
-form input[type="text"] {
+form input[type="text"], form input[type="password"] {
     width: 100%;
     padding: 6px 10px;
     margin: 8px 0;
+}
+
+.search-form input[type="text"] {
+    margin: 0;
 }
