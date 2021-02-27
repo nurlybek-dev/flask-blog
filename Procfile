@@ -1,3 +1,3 @@
 web: gunicorn main:app
-init-db: flask init-db;
+create-db: python create_db.py;
 createsuperuser: flask createsuperuser --username admin --password admin

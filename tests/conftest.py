@@ -6,6 +6,14 @@ from app import create_app, db
 from app.models import User, Post
 
 
+class TestConfig(object):
+    TESTING = True
+    SQLALCHEMY_DATABASE_URI = "sqlite://"
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
+    SECRET_KEY = 'test'
+    POSTS_PER_PAGE = 1
+
+
 class AuthActions(object):
     def __init__(self, client):
         self._clien = client
@@ -22,13 +30,7 @@ class AuthActions(object):
 
 @pytest.fixture
 def app():
-    app = create_app({
-        'TESTING': True,
-        'SQLALCHEMY_DATABASE_URI': "sqlite://",
-        'SQLALCHEMY_TRACK_MODIFICATIONS': False,
-        'SECRET_KEY': 'test',
-        'POSTS_PER_PAGE': 1
-    })
+    app = create_app(TestConfig)
 
     with app.app_context():
         db.create_all()
