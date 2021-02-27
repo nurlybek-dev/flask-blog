@@ -1,4 +1,5 @@
 flask
+flask-moment
 flask-sqlalchemy
 gunicorn
 psycopg2
