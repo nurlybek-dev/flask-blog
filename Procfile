@@ -1,0 +1,1 @@
+web: flask createsuperuser --username admin --password admin; gunicorn main:app

@@ -48,7 +48,7 @@ def create_app(test_config=None):
     Moment(app)
     Markdown(app)
 
-    from app.cli import createsuperuser
-    app.cli.add_command(createsuperuser)
+    from app import cli
+    cli.init_app(app)
 
     return app

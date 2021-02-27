@@ -19,3 +19,14 @@ def createsuperuser(username, password):
     db.session.add(user)
     db.session.commit()
     print('Super user create successfully.')
+
+
+@click.command()
+@with_appcontext
+def init_db():
+    db.create_all()
+
+
+def init_app(app):
+    app.cli.add_command(createsuperuser)
+    app.cli.add_command(init_db)
