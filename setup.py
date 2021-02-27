@@ -8,6 +8,8 @@ setup(
     zip_safe=False,
     install_required=[
         'flask',
+        'flask-moment',
+        'flask-markdown',
         'flask-sqlalchemy'
     ]
 )

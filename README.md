@@ -19,3 +19,10 @@ To create super user use command
 ```
 flask createsuperuser --username <name> --password <password>
 ```
+
+
+# Run tests
+Project include tests with pytest
+```
+pytest
+```
