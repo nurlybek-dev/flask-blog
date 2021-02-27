@@ -1,0 +1,21 @@
+{% extends 'admin/base.html' %}
+
+{% block content %}
+<a href="{{ url_for('posts.create') }}" class="btn">+ New</a>
+<table>
+    <thead>
+        <tr>
+            <td>ID</td>
+            <td>Author</td>
+            <td>Title</td>
+        </tr>
+    </thead>
+    {% for post in posts %}
+    <tr>
+        <td>{{ post.id }}</td>
+        <td>{{ post.author.username }}</td>
+        <td><a href="{{ url_for('posts.read', id=post.id) }}">{{ post.title }}</a></td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

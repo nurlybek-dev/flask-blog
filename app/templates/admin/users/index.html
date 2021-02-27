@@ -1,0 +1,21 @@
+{% extends 'admin/base.html' %}
+
+{% block content %}
+<a href="{{ url_for('users.create') }}" class="btn">+ New</a>
+<table>
+    <thead>
+        <tr>
+            <td>ID</td>
+            <td>Username</td>
+            <td>Is staff</td>
+        </tr>
+    </thead>
+    {% for user in users %}
+    <tr>
+        <td>{{ user.id }}</td>
+        <td><a href="{{ url_for('users.read', id=user.id) }}">{{ user.username }}</a></td>
+        <td>{{ user.is_staff }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

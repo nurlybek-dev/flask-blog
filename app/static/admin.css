@@ -1,0 +1,24 @@
+ul {
+    list-style: none;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+td {
+    border: 1px solid grey;
+    padding: 5px;
+}
+
+.control {
+    margin-top: 10px;
+    display: flex;
+}
+
+.control a, .control button {
+    height: 100%;
+    margin-right: 5px;
+}

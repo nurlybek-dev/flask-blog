@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+<form class="search-form">
+  <input type="text" name="search" value="{{ search_text }}" placeholder="Search...">
+  <button type="submit" class="btn">Search</button>
+</form>
+
+<section id="posts">
+  {% for post in posts.items %}
+  <article>
+    <header>
+      <div>
+        <span class="author">{{ post.author.username }}</span>
+        <time>{{ moment(post.created_at).fromNow() }}</time>
+      </div>
+      <h2><a href="{{ url_for('main.view', id=post.id) }}">{{ post.title }}</a></h2>
+    </header>
+    <div class="body">
+      {{ post.body|markdown }}
+    </div>
+    <footer>
+      <a href="{{ url_for('main.view', id=post.id) }}" class="btn">Read</a>
+    </footer>
+  </article>
+  {% endfor %}
+</section>
+<div class="pagination">
+  {% if posts.has_prev %}
+  <a class="btn prev" role="button" href="{{ url_for('main.index', page=posts.prev_num) }}">←Newer</a>
+  {% endif %}
+
+  {% if posts.has_next %}
+  <a class="btn next" role="button" href="{{ url_for('main.index', page=posts.next_num) }}">Older→</a>
+  {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Nurlybek">
+  <title>{% block title %}Blog{% endblock %}</title>
+  <link href="https://fonts.googleapis.com/css?family=Playfair&#43;Display:700,900&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+  <header>
+    <div>
+      <h2><a href="{{ url_for('main.index') }}">Blog</a></h2>
+    </div>
+    <div>
+      {% if g.user %}
+      <a href="{{ url_for('main.create') }}" class="btn">+New post</a>
+      <a href="{{ url_for('auth.logout') }}" class="btn">Logout</a>
+      {% else %}
+      <a href="{{ url_for('auth.login') }}" class="btn">Login</a>
+      <a href="{{ url_for('auth.register') }}" class="btn">Register</a>
+      {% endif %}
+    </div>
+  </header>
+
+  <main>
+    {% for message in get_flashed_messages() %}
+    <div class="flash">{{ message }}</div>
+    {% endfor %}
+    {% block content %}{% endblock %}
+
+    {% block scripts %}
+    {{ moment.include_jquery() }}
+    {{ moment.include_moment() }}
+    <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+    <script>
+      var simplemde = new SimpleMDE({
+        element: document.getElementById("simplemde-textarea")
+      })
+    </script>
+    {% endblock %}
+
+  </main>
+
+
+</body>
+
+
+</html>

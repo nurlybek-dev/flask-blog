@@ -1,0 +1,20 @@
+{% extends 'admin/base.html' %}
+
+{% block content %}
+
+<table>
+    {% for column in model.__table__.columns  %}
+    <tr>
+        <td>{{ column.key }}</td>
+        <td>{{ model[column.key] }}</td>
+    </tr>
+    {% endfor %}
+</table>
+<div class="control">
+    <a href="{{ url_for('users.update', id=model.id) }}" class="btn">Edit</a>
+    <form action="{{ url_for('users.delete', id=model.id) }}" method="post">
+        <button type="submit" class="btn red" onclick="return confirm('Are you sure?');">Delete</button>
+    </form>
+</div>
+
+{% endblock %}

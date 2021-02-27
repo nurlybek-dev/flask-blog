@@ -1,0 +1,12 @@
+{% extends 'admin/base.html' %}
+
+{% block content %}
+<form method="post">
+  <label for="author">Author</label>
+  <input type="text" name="author" id="author" value="{{ request.form['author'] }}" required>
+  <label for="title">Title</label>
+  <input type="text" name="title" id="title" value="{{ request.form['title'] }}" required>
+  <textarea name="body" id="simplemde-textarea">{{ request.form['body'] }}</textarea>
+  <button type="submit" class="btn">Save</button>
+</form>
+{% endblock %}

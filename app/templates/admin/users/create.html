@@ -1,0 +1,15 @@
+{% extends 'admin/base.html' %}
+
+{% block content %}
+
+<form method="post">
+    <label for="username">Username</label>
+    <input type="text" name="username" id="username" value="{{ request.form['username'] }}" required>
+    <label for="password">Password</label>
+    <input type="text" name="password" id="password" value="{{ request.form['password'] }}" required>
+    <label for="is_staff">Is staff</label>
+    <input type="checkbox" name="is_staff" id="is_staff">
+    <br>
+    <button type="submit" class="btn">Save</button>
+  </form>
+{% endblock %}

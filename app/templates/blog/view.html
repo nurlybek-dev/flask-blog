@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<article>
+  <header>
+    {% if g.user.id == post.user_id %}
+    <a class="action" href="{{ url_for('main.update', id=post['id']) }}">Edit</a>
+    {% endif %}
+    <div>
+      <span class="author">{{ post.author.username }}</span>
+      <time>{{ moment(post.created_at).fromNow() }}</time>
+    </div>
+    <h2>{{ post.title }}</h2>
+  </header>
+  <div class="body">
+    {{ post.body|markdown }}
+  </div>
+</article>
+
+<div class="comments">
+  <h2 class="comments__title">{{ post.comments.count() }} Comments</h2>
+  {% for comment in post.comments %}
+  <div class="comment">
+    <div class="comment__head">
+      <span class="comment__author">{{ comment.author.username }}</span>
+      <time class="comment__date-time">{{ moment(comment.created_at).fromNow() }}</time>
+    </div>
+    <div class="comment__message">
+      {{ comment.message }}
+    </div>
+    <div class="comment__footer"></div>
+  </div>
+  {% endfor %}
+  {% if g.user %}
+  <div class="comment-form">
+    <form action="{{ url_for('main.comment', id=post.id) }}" method="POST">
+      <textarea name="message" id="simplemde-textarea"></textarea>
+      <button type="submit" class="btn">Send</button>
+    </form>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

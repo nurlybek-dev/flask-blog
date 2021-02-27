@@ -1,0 +1,17 @@
+{% extends 'admin/base.html' %}
+
+{% block content %}
+
+<form method="post">
+    <label for="username">Username</label>
+    <input type="text" name="username" id="username" value="{{ request.form['username'] or user.username }}" required>
+    <br>
+    <label for="password">Password</label>
+    <input type="text" name="password" id="password" value="{{ request.form['password'] or user.password }}">
+    <br>
+    <label for="is_staff">Is staff</label>
+    <input type="checkbox" name="is_staff" id="is_staff" {% if user.is_staff %} checked {% endif %}>
+    <br>
+    <button type="submit" class="btn">Save</button>
+  </form>
+{% endblock %}

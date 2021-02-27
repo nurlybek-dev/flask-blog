@@ -1,0 +1,14 @@
+{% extends 'admin/base.html' %}
+
+{% block content %}
+
+<ul>
+    <li>
+        <a href="{{ url_for('users.index') }}">Users</a>
+    </li>
+    <li>
+        <a href="{{ url_for('posts.index') }}">Posts</a>
+    </li>
+</ul>
+
+{% endblock %}
